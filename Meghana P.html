@@ -1,0 +1,410 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Meghana P</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: left-aligned single column, ledger-style rows. One bold move: the hero name sits in a detection box, like a YOLO annotation. */
+:root {
+  color-scheme: dark;
+  --bg: #0E1118;
+  --surface: #151A24;
+  --fg: #E8ECF3;
+  --muted: #98A2B5;
+  --line: #262D3B;
+  --accent: #8DA0FF;
+  --on-accent: #0E1118;
+  --chip: #1C2230;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 48px;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--bg);
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: 1040px; margin: 0 auto; }
+
+/* Header */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
+.brand { font-family: var(--font-mono); font-size: 13px; text-decoration: none; font-weight: 500; }
+.nav { display: flex; gap: 20px; flex-wrap: wrap; font-family: var(--font-mono); font-size: 13px; }
+.nav a { text-decoration: none; color: var(--muted); padding-block: 2px; border-bottom: 1px solid transparent; }
+.nav a:hover { color: var(--fg); border-bottom-color: var(--accent); }
+
+/* Hero */
+.hero { padding-block: 72px 56px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 40px; }
+.detect {
+  position: relative; display: inline-block; margin: 0;
+  padding: .06em .22em .14em;
+  border: 2px solid var(--accent);
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(3rem, 12vw, 7.5rem); line-height: 1; letter-spacing: -.03em;
+  text-wrap: balance;
+}
+.detect .tag {
+  position: absolute; left: -2px; bottom: 100%;
+  background: var(--accent); color: var(--on-accent);
+  font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: .02em;
+  line-height: 1; padding: 6px 9px; letter-spacing: .04em;
+}
+.detect i { position: absolute; width: 9px; height: 9px; background: var(--accent); }
+.detect i:nth-of-type(1) { right: -6px; top: -6px; }
+.detect i:nth-of-type(2) { right: -6px; bottom: -6px; }
+.detect i:nth-of-type(3) { left: -6px; bottom: -6px; }
+.lede { max-width: 38em; font-size: clamp(1.125rem, 2.4vw, 1.375rem); line-height: 1.5; margin: 36px 0 28px; }
+.links { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  text-decoration: none; padding: 11px 16px; border: 1px solid var(--fg);
+  background: transparent; color: var(--fg); cursor: pointer;
+}
+.btn:hover { background: var(--fg); color: var(--bg); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn.primary:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+
+.facts {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0;
+  margin: 56px 0 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.facts div { padding: 18px 20px 18px 0; min-width: 0; }
+.facts dt { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.facts dd { margin: 0; font-weight: 500; }
+
+/* Sections */
+section { padding-block: 56px 8px; }
+.sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 28px; }
+.sec-head h2 {
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.1; letter-spacing: -.02em; margin: 0; text-wrap: balance;
+}
+.sec-head .rule { flex: 1; height: 1px; background: var(--line); min-width: 24px; }
+.sec-head .lbl { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+
+.about { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 46em; }
+.about p { margin: 0; }
+
+/* Fellowship fit */
+.fit { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 32px; }
+.fit div { background: var(--surface); border: 1px solid var(--line); padding: 22px; min-width: 0; }
+.fit h3 { font-family: var(--font-display); font-size: 1.125rem; margin: 0 0 8px; letter-spacing: -.01em; }
+.fit p { margin: 0; color: var(--muted); font-size: 15px; }
+
+/* Projects */
+.proj { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); gap: 16px 48px; padding-block: 32px; border-top: 1px solid var(--line); }
+.proj:last-child { border-bottom: 1px solid var(--line); }
+.proj h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; line-height: 1.2; letter-spacing: -.015em; margin: 0 0 6px; text-wrap: balance; }
+.proj .when { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin: 0 0 14px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.tags li { font-family: var(--font-mono); font-size: 12px; background: var(--chip); padding: 4px 9px; }
+.proj ul.pts { margin: 0; padding-left: 1.1em; display: grid; gap: 10px; }
+.proj ul.pts li::marker { color: var(--accent); }
+
+/* Skills */
+.skills { border-top: 1px solid var(--line); }
+.skill-row { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 12px 32px; padding-block: 18px; border-bottom: 1px solid var(--line); align-items: baseline; }
+.skill-row h3 { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; font-weight: 500; }
+
+/* Two column blocks */
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px 56px; }
+.cols > div { min-width: 0; }
+.cols h3 { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin: 0 0 14px; }
+.entry { padding-block: 14px; border-top: 1px solid var(--line); }
+.entry:last-child { border-bottom: 1px solid var(--line); }
+.entry b { font-weight: 600; }
+.entry p { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+.entry .meta { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+/* Experience */
+.log { border-top: 1px solid var(--line); }
+.log-row { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 8px 32px; padding-block: 16px; border-bottom: 1px solid var(--line); }
+.log-row time { font-family: var(--font-mono); font-size: 12px; color: var(--muted); padding-top: 4px; }
+.log-row .role { font-weight: 600; }
+.log-row .org { color: var(--muted); font-size: 15px; }
+
+/* Contact */
+.contact { background: var(--surface); border: 1px solid var(--line); padding: clamp(24px, 5vw, 48px); margin-top: 8px; }
+.contact h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.05; letter-spacing: -.025em; margin: 0 0 12px; text-wrap: balance; }
+.contact p { margin: 0 0 24px; max-width: 34em; color: var(--muted); }
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 16px; }
+.mail code { font-family: var(--font-mono); font-size: clamp(14px, 3.6vw, 18px); overflow-wrap: anywhere; user-select: all; }
+.ok { font-family: var(--font-mono); font-size: 12px; color: var(--accent); min-height: 1em; }
+footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+@media (max-width: 720px) {
+  .hero { padding-block: 48px 40px; }
+  .proj { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .skill-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .log-row { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .log-row time { padding-top: 0; }
+  .nav { gap: 14px; }
+  .sec-head .rule { display: none; }
+}
+/* Motion */
+.progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--accent); transform-origin: left; transform: scaleX(0); pointer-events: none; }
+.nav a.on { color: var(--fg); border-bottom-color: var(--accent); }
+
+.detect { animation: box-in .8s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes box-in { from { clip-path: inset(-40px 100% -40px -40px); } to { clip-path: inset(-40px -40px -40px -40px); } }
+.lede, .links, .facts { animation: rise .7s cubic-bezier(.2,.8,.2,1) both; }
+.lede { animation-delay: .45s; } .links { animation-delay: .6s; } .facts { animation-delay: .75s; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+.rv { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
+.rv.in { opacity: 1; transform: none; }
+
+.proj { position: relative; margin-inline: -12px; padding-inline: 12px; }
+.proj::after {
+  content: attr(data-label); position: absolute; left: 0; top: 0; z-index: 1;
+  background: var(--accent); color: var(--on-accent);
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; line-height: 1; padding: 6px 9px;
+  opacity: 0; transition: opacity .2s ease; pointer-events: none;
+}
+.proj:hover, .proj:focus-within { outline: 2px solid var(--accent); outline-offset: -2px; }
+.proj:hover::after, .proj:focus-within::after { opacity: 1; }
+.tags li { transition: background .2s ease, color .2s ease; }
+.tags li:hover { background: var(--accent); color: var(--on-accent); }
+.fit div { transition: transform .25s ease, border-color .25s ease; }
+.fit div:hover { transform: translateY(-3px); border-color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .detect, .lede, .links, .facts { animation: none; }
+  .rv { opacity: 1; transform: none; transition: none; }
+  .fit div:hover { transform: none; }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">meghana.p</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<main class="wrap" id="top">
+  <div class="hero">
+    <h1 class="detect"><span class="tag" id="tag">builder</span>Meghana P<i></i><i></i><i></i></h1>
+    <p class="lede">Third-year Computer Science student at PES University. I build computer vision tools, ML applications and full-stack products, and I ship them end to end.</p>
+    <div class="links">
+      <a class="btn primary" href="https://github.com/meghanapillappa" target="_blank" rel="noopener">GitHub &#8599;</a>
+      <a class="btn" href="https://linkedin.com/in/meghana-pillappa-964901293" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+    </div>
+    <dl class="facts">
+      <div><dt>Based in</dt><dd>Bengaluru, India</dd></div>
+      <div><dt>Studying</dt><dd>B.Tech CSE, PES University, 2024&ndash;2028</dd></div>
+      <div><dt>Focus</dt><dd>Computer vision, ML apps, full-stack</dd></div>
+      <div><dt>Hackathons</dt><dd>3rd place, Kalpana: Hack for Humanity</dd></div>
+    </dl>
+  </div>
+
+  <section id="about">
+    <div class="sec-head"><h2>About</h2><span class="rule"></span></div>
+    <div class="about">
+      <p>I have worked with computer vision, Python development and ML-based applications, and I like projects that go from idea to something a person can use. My toolkit for that includes YOLO, OpenCV and Streamlit on the ML side, and React, Flask and MongoDB for full-stack work.</p>
+      <p>Outside coursework I take part in hackathons, solve algorithm problems on LeetCode to keep my DSA fundamentals sharp, and work with several student clubs and organisations.</p>
+      <p>I am open to product management roles. I like working out what people need, turning it into a clear plan, and getting a team to deliver it, which is what my project work and my roles at AIESEC in India and the Entrepreneurship Club have given me practice in.</p>
+    </div>
+    <div class="fit">
+      <div><h3>Ships end to end</h3><p>The Mentor Distribution Engine covers a React frontend, a Flask REST API, MongoDB, authentication and audit logging.</p></div>
+      <div><h3>Tested at hackathons</h3><p>3rd place at Kalpana: Hack for Humanity (IEEE PESU ECC), plus participation in Swasthya Avishkar.</p></div>
+      <div><h3>Works across teams</h3><p>Five active roles across clubs and AIESEC in India, from technical teams to corporate relations.</p></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head"><h2>Projects</h2><span class="rule"></span></div>
+
+    <article class="proj" data-label="web app">
+      <div>
+        <h3>Mentor Distribution Engine</h3>
+        <ul class="tags"><li>React</li><li>Flask</li><li>MongoDB</li><li>Python</li></ul>
+      </div>
+      <ul class="pts">
+        <li>Built a mentor&ndash;mentee matching platform that balances groups by grade, section and CGPA using stratified balancing, with incremental rebalancing when mentors change.</li>
+        <li>Developed role-based portals, MongoDB workspaces, authentication and audit logging, with a React frontend on top of a Flask REST API.</li>
+      </ul>
+    </article>
+
+    <article class="proj" data-label="healthcare ai">
+      <div>
+        <h3>MedGenesis: AI-Integrated Healthcare Ecosystem</h3>
+        <ul class="tags"><li>Healthcare AI</li><li>Medical imaging</li><li>Patient records</li></ul>
+      </div>
+      <ul class="pts">
+        <li>Designed an AI-powered healthcare platform that combines predictive diagnosis, AI-based medical image analysis, real-time hospital bed allocation and centralized patient records.</li>
+        <li>Aimed to improve clinical decision-making and hospital efficiency through intelligent automation.</li>
+        <li>Built around secure data handling and unified access to patient information across departments.</li>
+      </ul>
+    </article>
+
+    <article class="proj" data-label="assistive tech">
+      <div>
+        <h3>Deaf and Blind Communicator</h3>
+        <p class="when">Feb 2025</p>
+        <ul class="tags"><li>Python</li><li>Tkinter</li><li>Speech-to-Text</li><li>Text-to-Speech</li></ul>
+      </div>
+      <ul class="pts">
+        <li>Developed a Python assistive communication tool with a Tkinter interface.</li>
+        <li>Integrated Speech-to-Text and Text-to-Speech so two people can communicate in both directions.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><h2>Skills</h2><span class="rule"></span></div>
+    <div class="skills">
+      <div class="skill-row"><h3>Languages</h3><ul class="tags"><li>Python</li><li>C</li><li>Java</li></ul></div>
+      <div class="skill-row"><h3>Machine learning</h3><ul class="tags"><li>Data preprocessing</li><li>Supervised learning</li><li>Classification</li><li>Regression</li><li>KNN</li><li>NumPy</li><li>Pandas</li><li>Scikit-learn</li></ul></div>
+      <div class="skill-row"><h3>Computer vision</h3><ul class="tags"><li>YOLOv8</li><li>OpenCV</li></ul></div>
+      <div class="skill-row"><h3>Data visualization</h3><ul class="tags"><li>Power BI</li><li>Pandas</li><li>Matplotlib</li><li>Dashboards</li></ul></div>
+      <div class="skill-row"><h3>Web</h3><ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Streamlit</li></ul></div>
+      <div class="skill-row"><h3>Fundamentals &amp; tools</h3><ul class="tags"><li>DSA</li><li>Git</li><li>DBMS</li><li>Operating Systems</li><li>Computer Networks</li><li>ERP / SAP concepts</li></ul></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><h2>Leadership &amp; activities</h2><span class="rule"></span></div>
+    <div class="log">
+      <div class="log-row"><time>Nov 2025 &ndash; Present</time><div><div class="role">Corporate Relations Member</div><div class="org">Entrepreneurship Club, PES University</div></div></div>
+      <div class="log-row"><time>Oct 2025 &ndash; Present</time><div><div class="role">Technical Team Member</div><div class="org">Socioholics Club</div></div></div>
+      <div class="log-row"><time>Aug 2025 &ndash; Present</time><div><div class="role">Junior Manager</div><div class="org">AIESEC in India</div></div></div>
+      <div class="log-row"><time>Apr 2025 &ndash; Present</time><div><div class="role">Organising Committee Member</div><div class="org">Quotient Quiz Club, ECC</div></div></div>
+      <div class="log-row"><time>Mar 2025 &ndash; Present</time><div><div class="role">Technical Team Member</div><div class="org">Weal, Bengaluru</div></div></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-head"><h2>Education &amp; recognition</h2><span class="rule"></span></div>
+    <div class="cols">
+      <div>
+        <h3>Education</h3>
+        <div class="entry"><b>PES University, Bangalore</b><p>B.Tech in Computer Science and Engineering</p><div class="meta">2024 &ndash; 2028</div></div>
+        <div class="entry"><b>RV PU College, Bangalore</b><p>PUC (Class 12), PCMB</p><div class="meta">91.2%</div></div>
+        <h3 style="margin-top:32px">Certifications</h3>
+        <div class="entry"><b>Supervised Machine Learning: Regression and Classification</b><p>DeepLearning.AI</p><div class="meta">Oct 2026</div></div>
+        <div class="entry"><b>Complete Generative AI Course With Langchain and Huggingface</b><p>Udemy</p></div>
+      </div>
+      <div>
+        <h3>Relevant coursework</h3>
+        <div class="entry"><b>Machine Learning</b><p>Data preprocessing, supervised learning, classification, regression and KNN, implemented in Python with NumPy, Pandas, Matplotlib and Scikit-learn.</p></div>
+        <div class="entry"><b>Data Visualization (elective)</b><p>Data cleaning and visualization with Python, Pandas, Matplotlib and Power BI. Built bar, line and scatter charts and dashboards from real datasets.</p></div>
+        <div class="entry"><b>Enterprise Business Systems (elective)</b><p>ERP, SAP, business process modeling, and how information systems support business functions.</p></div>
+        <h3 style="margin-top:32px">Achievements</h3>
+        <div class="entry"><b>3rd place, Kalpana: Hack for Humanity</b><p>IEEE PESU ECC. Also participated in Swasthya Avishkar.</p></div>
+        <div class="entry"><b>Problem solving</b><p>Active on LeetCode, solving algorithmic problems regularly.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <h2>Let&rsquo;s build something.</h2>
+      <p>Open to product management roles, internships and projects where computer vision, ML and solid engineering meet.</p>
+      <div class="mail">
+        <code id="email">meghanapillappa923@gmail.com</code>
+        <button class="btn" id="copy" type="button">Copy email</button>
+        <span class="ok" id="ok" role="status"></span>
+      </div>
+      <div class="links">
+        <a class="btn primary" href="https://github.com/meghanapillappa" target="_blank" rel="noopener">github.com/meghanapillappa</a>
+        <a class="btn" href="https://linkedin.com/in/meghana-pillappa-964901293" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+      </div>
+    </div>
+    <footer><span>Meghana P &middot; Bengaluru, India</span><span>B.Tech CSE, PES University</span></footer>
+  </section>
+</main>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy');
+  var ok = document.getElementById('ok');
+  var text = document.getElementById('email').textContent;
+  function done(msg) { ok.textContent = msg; setTimeout(function () { ok.textContent = ''; }, 2500); }
+  function fallback() {
+    var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    done('Press Ctrl+C to copy');
+  }
+  btn.addEventListener('click', function () {
+    try {
+      navigator.clipboard.writeText(text).then(function () { done('Copied'); }, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Scroll progress and active nav link */
+  var bar = document.getElementById('progress');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+  var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')';
+    var active = -1;
+    targets.forEach(function (t, i) { if (t && t.getBoundingClientRect().top <= 140) active = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === active); });
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+
+  /* Rotating detection label */
+  var tag = document.getElementById('tag');
+  var labels = ['builder', 'cv developer', 'full-stack dev', 'hackathon winner', 'student'];
+  var n = 0;
+  if (!reduce) {
+    setInterval(function () {
+      if (document.hidden) return;
+      n = (n + 1) % labels.length;
+      tag.textContent = labels[n];
+    }, 2400);
+  }
+
+  /* Reveal sections as they scroll into view */
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.sec-head, .about p, .fit div, .proj, .skill-row, .log-row, .entry, .contact').forEach(function (el, i) {
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      el.classList.add('rv');
+      io.observe(el);
+    });
+  }
+})();
+</script>
+
+</body></html>
